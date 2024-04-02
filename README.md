@@ -14,7 +14,14 @@ POSTGRES_USER
 POSTGRES_DB
 ```
 
-Los valores seteados son los que utiliza docker en sus contenedores, el resto se pueden crear a elección. Luego, se debe ingresar por consola a este directorio para activar docker, instlar dependencias y correr la API.
+Los valores seteados son los que utiliza docker en sus contenedores, el resto se pueden crear a elección. se debe considerar lo siguiente:
+```bash
+DB_USER = POSTGRES_USER
+DB_PASS = POSTGRES_PASSWORD
+DB_NAME = POSTGRES_DB
+```
+
+ Luego, se debe ingresar por consola a este directorio para activar docker, instlar dependencias y correr la API.
 
 ```bash
 cd backend
