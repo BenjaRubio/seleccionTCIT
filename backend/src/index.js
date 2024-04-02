@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const { connectDB } = require('./db');
 const port = 3001;
 
@@ -6,6 +7,7 @@ const app = express();
 const bodyParser = require('body-parser');
 connectDB();
 
+app.use(cors({origin: "http://localhost"}));
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -50,7 +52,8 @@ app.post('/post', async(req, res) => {
 app.delete('/post/:post_id', async(req, res) => {
     const postId = req.params.post_id;
     try {
-        const post = await Post.destroy({
+        const post = await Post.findByPk(postId);
+        await Post.destroy({
             where: {
                 id: postId
             }
